@@ -4,7 +4,7 @@ import com.umbrella.passwordskeeper.domain.repositories.AuthRepository
 
 class CreateAuthPasswordUseCase(private val repository: AuthRepository) {
 
-    suspend operator fun invoke(password: String): Boolean {
-        return repository.createAuthPassword(password)
+    suspend operator fun invoke(password: String) {
+        repository.createAuthPassword(password)
     }
 }
