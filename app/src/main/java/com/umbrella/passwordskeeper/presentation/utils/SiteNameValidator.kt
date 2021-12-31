@@ -1,17 +1,15 @@
 package com.umbrella.passwordskeeper.presentation.utils
 
+import java.util.regex.Pattern
+
 class SiteNameValidator {
     companion object {
-        private const val MIN_LETTER_COUNT = 5
-        private const val DOT = "."
-        private const val SPACE = " "
+        private const val SITE_NAME_PATTERN = "^[0-9a-zA-Z]{2,}\\.(com|ru)$"
 
         fun isValidSiteName(site: String?): Boolean {
             return (site != null
-                    && site.isNotBlank())
-                    && site.length >= MIN_LETTER_COUNT
-                    && site.contains(DOT)
-                    && !site.contains(SPACE)
+                    && site.isNotBlank()
+                    && Pattern.compile(SITE_NAME_PATTERN).matcher(site).matches())
         }
     }
 }

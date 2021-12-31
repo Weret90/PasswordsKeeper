@@ -44,6 +44,7 @@ class AuthFragment : Fragment() {
             it?.let {
                 showToast(getString(R.string.need_create_password))
                 binding.buttonEnter.text = getString(R.string.button_save_password)
+                binding.correctPasswordCondition.visibility = View.VISIBLE
                 binding.buttonEnter.setOnClickListener {
                     val password = binding.passwordInputField.text.toString()
                     viewModel.createAuthPassword(password)
@@ -62,8 +63,7 @@ class AuthFragment : Fragment() {
             errorType?.let {
                 when (errorType) {
                     ErrorType.CREATED_INCORRECT_PASSWORD -> {
-                        showToast(getString(R.string.incorrect_password_1))
-                        showToast(getString(R.string.incorrect_password_2))
+                        showToast(getString(R.string.incorrect_password))
                     }
                     ErrorType.WRONG_PASSWORD -> {
                         showToast(getString(R.string.wrong_password))

@@ -34,6 +34,8 @@ class AddPasswordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initViewModelObservers()
+
         binding.buttonSavePassword.setOnClickListener {
             val site = binding.siteInputField.text.toString()
             val password = binding.passwordInputField.text.toString()
@@ -55,8 +57,7 @@ class AddPasswordFragment : Fragment() {
 
         viewModel.errorPasswordLiveData.observe(viewLifecycleOwner) {
             it?.let {
-                showToast(getString(R.string.incorrect_password_1))
-                showToast(getString(R.string.incorrect_password_2))
+                showToast(getString(R.string.incorrect_password))
                 viewModel.clearLiveData()
             }
         }

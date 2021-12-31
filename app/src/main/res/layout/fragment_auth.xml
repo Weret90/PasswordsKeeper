@@ -24,6 +24,15 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/correct_password_condition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:gravity="center"
+        android:text="@string/correct_password_conditions"
+        android:visibility="gone" />
+
     <Button
         android:id="@+id/button_enter"
         android:layout_width="match_parent"
