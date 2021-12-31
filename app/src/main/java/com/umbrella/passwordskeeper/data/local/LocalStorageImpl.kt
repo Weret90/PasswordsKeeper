@@ -5,8 +5,7 @@ import androidx.lifecycle.LiveData
 import com.umbrella.passwordskeeper.data.local.database.PasswordsDao
 import com.umbrella.passwordskeeper.data.model.PasswordDTO
 
-class LocalStorageImpl(context: Context, private val database: PasswordsDao) :
-    LocalStorage {
+class LocalStorageImpl(context: Context, private val database: PasswordsDao) : LocalStorage {
 
     companion object {
         private const val SHARED_PREF_NAME = "authorization"
@@ -24,7 +23,7 @@ class LocalStorageImpl(context: Context, private val database: PasswordsDao) :
         sharedPreferences.edit().putString(KEY_PASSWORD, password).apply()
     }
 
-    override suspend fun getPasswordsList(): LiveData<List<PasswordDTO>> {
+    override fun getPasswordsList(): LiveData<List<PasswordDTO>> {
         return database.getAllPasswords()
     }
 

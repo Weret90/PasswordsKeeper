@@ -9,4 +9,5 @@ val useCasesModule = module {
     factory { CreateAuthPasswordUseCase(repository = get()) }
     factory { DeletePasswordUseCase(repository = get()) }
     factory { GetPasswordsListUseCase(repository = get()) }
+    factory { GetAuthPasswordUseCase(repository = get()) }
 }

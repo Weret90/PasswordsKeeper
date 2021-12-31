@@ -4,6 +4,7 @@ import android.app.Application
 import com.umbrella.passwordskeeper.di.localStorageModule
 import com.umbrella.passwordskeeper.di.repositoriesModule
 import com.umbrella.passwordskeeper.di.useCasesModule
+import com.umbrella.passwordskeeper.di.viewModelsModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -13,7 +14,7 @@ class App : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@App)
-            modules(repositoriesModule, localStorageModule, useCasesModule)
+            modules(repositoriesModule, localStorageModule, useCasesModule, viewModelsModule)
         }
     }
 }

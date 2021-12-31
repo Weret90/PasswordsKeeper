@@ -6,7 +6,7 @@ import com.umbrella.passwordskeeper.domain.repositories.PasswordsRepository
 
 class GetPasswordsListUseCase(private val repository: PasswordsRepository) {
 
-    suspend operator fun invoke(): LiveData<List<Password>> {
+    operator fun invoke(): LiveData<List<Password>> {
         return repository.getPasswordsList()
     }
 }

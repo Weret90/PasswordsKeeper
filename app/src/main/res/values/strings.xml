@@ -4,4 +4,13 @@
     <string name="button_enter">Войти</string>
     <string name="site_text_view">Сайт: %s</string>
     <string name="password_text_view">Пароль: %s</string>
+    <string name="incorrect_site_name">Некорректное название сайта: не должно быть пустым, содержать меньше 5 букв, должно содержать точку и не должно содержать пробелы</string>
+    <string name="incorrect_password_1">Пароль должен содержать от 6 до 10 символов: только латинские буквы и цифры</string>
+    <string name="incorrect_password_2">Хотя бы одну цифру, хотя бы одну заглавную и хотя бы одну строчную буквы</string>
+    <string name="need_create_password">Требуется создать пароль, пожалуйста, запомните его</string>
+    <string name="button_save_password">Запомнить пароль</string>
+    <string name="wrong_password">Введен неверный пароль</string>
+    <string name="empty_password_field">Поле для пароля не должно быть пустым</string>
+    <string name="hint_site_name">Введите название сайта</string>
+    <string name="button_save_site_password">Сохранить</string>
 </resources>

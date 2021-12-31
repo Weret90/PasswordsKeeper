@@ -11,8 +11,8 @@ interface PasswordsDao {
     fun getAllPasswords(): LiveData<List<PasswordDTO>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addPassword(password: PasswordDTO)
+    suspend fun addPassword(password: PasswordDTO)
 
     @Delete
-    fun deletePassword(password: PasswordDTO)
+    suspend fun deletePassword(password: PasswordDTO)
 }
