@@ -4,7 +4,7 @@ import com.umbrella.passwordskeeper.domain.repositories.AuthRepository
 
 class GetAuthPasswordUseCase(private val repository: AuthRepository) {
 
-    suspend operator fun invoke(): String? {
+    operator fun invoke(): String? {
         return repository.getAuthPassword()
     }
 }

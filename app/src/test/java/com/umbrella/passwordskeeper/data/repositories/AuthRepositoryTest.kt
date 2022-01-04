@@ -18,46 +18,34 @@ class AuthRepositoryTest {
     fun setUp() {
         localStorage = mock()
         repository = AuthRepositoryImpl(localStorage)
-        runBlocking {
-            whenever(localStorage.getAuthPassword()).thenReturn("Password14")
-        }
+        whenever(localStorage.getAuthPassword()).thenReturn("Password14")
     }
 
     @Test
     fun `WHEN get saved password EXPECT Password14`() {
-        runBlocking {
-            val actual = repository.getAuthPassword()
-            val expected = "Password14"
-            assertEquals(expected, actual)
-        }
+        val actual = repository.getAuthPassword()
+        val expected = "Password14"
+        assertEquals(expected, actual)
     }
 
     @Test
     fun `WHEN get saved password EXPECT not null`() {
-        runBlocking {
-            assertNotNull(repository.getAuthPassword())
-        }
+        assertNotNull(repository.getAuthPassword())
     }
 
     @Test
     fun `WHEN get password before create password EXPECT null`() {
-        runBlocking {
-            whenever(localStorage.getAuthPassword()).thenReturn(null)
-            assertNull(repository.getAuthPassword())
-        }
+        whenever(localStorage.getAuthPassword()).thenReturn(null)
+        assertNull(repository.getAuthPassword())
     }
 
     @Test
     fun `WHEN input wrong password EXPECT false (wrong password)`() {
-        runBlocking {
-            assertFalse(repository.checkAuthPassword("Password12"))
-        }
+        assertFalse(repository.checkAuthPassword("Password12"))
     }
 
     @Test
     fun `WHEN input right password EXPECT true (right password)`() {
-        runBlocking {
-            assertTrue(repository.checkAuthPassword("Password14"))
-        }
+        assertTrue(repository.checkAuthPassword("Password14"))
     }
 }

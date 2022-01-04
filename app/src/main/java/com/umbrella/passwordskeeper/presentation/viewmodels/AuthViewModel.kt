@@ -29,48 +29,31 @@ class AuthViewModel(
     val errorLiveData: LiveData<ErrorType?> = _errorLiveData
 
     fun checkRegistration() {
-        viewModelScope.launch(Dispatchers.IO) {
-            val password = getAuthPasswordUseCase()
-            if (password == null) {
-                withContext(Dispatchers.Main) {
-                    _needRegistrationLiveData.value = Unit
-                }
-            }
+        val password = getAuthPasswordUseCase()
+        if (password == null) {
+            _needRegistrationLiveData.value = Unit
+
         }
     }
 
     fun createAuthPassword(password: String?) {
-        viewModelScope.launch(Dispatchers.IO) {
-            if (PasswordValidator.isValidCreatedPassword(password)) {
-                createAuthPasswordUseCase(password!!)
-                withContext(Dispatchers.Main) {
-                    _successPasswordLiveData.value = Unit
-                }
-            } else {
-                withContext(Dispatchers.Main) {
-                    _errorLiveData.value = ErrorType.CREATED_INCORRECT_PASSWORD
-                }
-            }
+        if (PasswordValidator.isValidCreatedPassword(password)) {
+            createAuthPasswordUseCase(password!!)
+            _successPasswordLiveData.value = Unit
+        } else {
+            _errorLiveData.value = ErrorType.CREATED_INCORRECT_PASSWORD
         }
     }
 
     fun checkInputPassword(password: String?) {
-        viewModelScope.launch(Dispatchers.IO) {
-            if (PasswordValidator.isValidInputPassword(password)) {
-                if (checkAuthPasswordUseCase(password!!)) {
-                    withContext(Dispatchers.Main) {
-                        _successPasswordLiveData.value = Unit
-                    }
-                } else {
-                    withContext(Dispatchers.Main) {
-                        _errorLiveData.value = ErrorType.WRONG_PASSWORD
-                    }
-                }
+        if (PasswordValidator.isValidInputPassword(password)) {
+            if (checkAuthPasswordUseCase(password!!)) {
+                _successPasswordLiveData.value = Unit
             } else {
-                withContext(Dispatchers.Main) {
-                    _errorLiveData.value = ErrorType.INCORRECT_INPUT_PASSWORD
-                }
+                _errorLiveData.value = ErrorType.WRONG_PASSWORD
             }
+        } else {
+            _errorLiveData.value = ErrorType.INCORRECT_INPUT_PASSWORD
         }
     }
 
