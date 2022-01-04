@@ -15,11 +15,11 @@ class LocalStorageImpl(context: Context, private val database: PasswordsDao) : L
     private val sharedPreferences =
         context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
 
-    override suspend fun getAuthPassword(): String? {
+    override fun getAuthPassword(): String? {
         return sharedPreferences.getString(KEY_PASSWORD, null)
     }
 
-    override suspend fun putAuthPassword(password: String) {
+    override fun putAuthPassword(password: String) {
         sharedPreferences.edit().putString(KEY_PASSWORD, password).apply()
     }
 
