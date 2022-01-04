@@ -3,15 +3,11 @@ package com.umbrella.passwordskeeper.presentation.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.umbrella.passwordskeeper.domain.usecases.CheckAuthPasswordUseCase
 import com.umbrella.passwordskeeper.domain.usecases.CreateAuthPasswordUseCase
 import com.umbrella.passwordskeeper.domain.usecases.GetAuthPasswordUseCase
 import com.umbrella.passwordskeeper.presentation.utils.ErrorType
 import com.umbrella.passwordskeeper.presentation.utils.PasswordValidator
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class AuthViewModel(
     private val getAuthPasswordUseCase: GetAuthPasswordUseCase,
@@ -32,7 +28,6 @@ class AuthViewModel(
         val password = getAuthPasswordUseCase()
         if (password == null) {
             _needRegistrationLiveData.value = Unit
-
         }
     }
 
