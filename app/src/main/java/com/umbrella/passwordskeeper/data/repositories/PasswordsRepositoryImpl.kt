@@ -10,7 +10,7 @@ import com.umbrella.passwordskeeper.domain.repositories.PasswordsRepository
 
 class PasswordsRepositoryImpl(private val local: LocalStorage) : PasswordsRepository {
 
-    override  fun getPasswordsList(): LiveData<List<Password>> {
+    override fun getPasswordsList(): LiveData<List<Password>> {
         return Transformations.map(local.getPasswordsList()) {
             it.toDomainModel()
         }

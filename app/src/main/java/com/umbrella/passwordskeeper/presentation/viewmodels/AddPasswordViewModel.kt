@@ -13,8 +13,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class AddPasswordViewModel(
-    private val addPasswordUseCase: AddPasswordUseCase
-): ViewModel() {
+    private val addPasswordUseCase: AddPasswordUseCase,
+) : ViewModel() {
 
     private val _errorSiteNameLiveData = MutableLiveData<Unit?>()
     val errorSiteNameLiveData: LiveData<Unit?> = _errorSiteNameLiveData

@@ -1,5 +1,6 @@
 package com.umbrella.passwordskeeper.data.repositories
 
+import com.umbrella.passwordskeeper.TEST_PASSWORD
 import com.umbrella.passwordskeeper.data.local.LocalStorage
 import com.umbrella.passwordskeeper.data.mapper.toDataModel
 import com.umbrella.passwordskeeper.domain.entities.Password
@@ -30,7 +31,7 @@ class PasswordsRepositoryTest {
 
     @Test
     fun `WHEN call addPassword from repository EXPECT call addPassword from localStorage`() {
-        val correctPassword = Password("vk.com", "Password14")
+        val correctPassword = Password("vk.com", TEST_PASSWORD)
         runBlocking {
             passwordsRepository.addPassword(correctPassword)
             verify(localStorage, times(1)).addPassword(correctPassword.toDataModel())
@@ -39,7 +40,7 @@ class PasswordsRepositoryTest {
 
     @Test
     fun `WHEN call deletePassword from repository EXPECT call deletePassword from localStorage`() {
-        val passwordForDelete = Password("vk.com", "Password14")
+        val passwordForDelete = Password("vk.com", TEST_PASSWORD)
         runBlocking {
             passwordsRepository.deletePassword(passwordForDelete)
             verify(localStorage, times(1)).deletePassword(passwordForDelete.toDataModel())

@@ -1,5 +1,6 @@
 package com.umbrella.passwordskeeper.presentation.utils
 
+import com.umbrella.passwordskeeper.TEST_PASSWORD
 import org.junit.Assert.assertFalse
 import kotlin.test.Test
 import kotlin.test.assertTrue
@@ -62,7 +63,7 @@ class PasswordValidatorTest {
 
     @Test
     fun `WHEN create correct password EXPECT true (correct password)`() {
-        val isValid = PasswordValidator.isValidCreatedPassword("Password14")
+        val isValid = PasswordValidator.isValidCreatedPassword(TEST_PASSWORD)
         assertTrue(isValid)
     }
 }

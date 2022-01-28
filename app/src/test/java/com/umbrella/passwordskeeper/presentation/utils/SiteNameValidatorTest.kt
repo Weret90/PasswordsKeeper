@@ -1,5 +1,6 @@
 package com.umbrella.passwordskeeper.presentation.utils
 
+import com.umbrella.passwordskeeper.TEST_CORRECT_SITE_NAME
 import org.junit.Assert
 import org.junit.Test
 
@@ -47,7 +48,7 @@ class SiteNameValidatorTest {
     fun `WHEN create correct siteName EXPECT true (correct siteName)`() {
         var isValid = SiteNameValidator.isValidSiteName("vk.com")
         Assert.assertTrue(isValid)
-        isValid = SiteNameValidator.isValidSiteName("facebook.ru")
+        isValid = SiteNameValidator.isValidSiteName(TEST_CORRECT_SITE_NAME)
         Assert.assertTrue(isValid)
     }
 }
