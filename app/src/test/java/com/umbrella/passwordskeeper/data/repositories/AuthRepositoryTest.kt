@@ -1,5 +1,7 @@
 package com.umbrella.passwordskeeper.data.repositories
 
+import com.umbrella.passwordskeeper.TEST_PASSWORD
+import com.umbrella.passwordskeeper.TEST_WRONG_PASSWORD
 import com.umbrella.passwordskeeper.data.local.LocalStorage
 import com.umbrella.passwordskeeper.domain.repositories.AuthRepository
 import kotlinx.coroutines.runBlocking
@@ -18,13 +20,13 @@ class AuthRepositoryTest {
     fun setUp() {
         localStorage = mock()
         repository = AuthRepositoryImpl(localStorage)
-        whenever(localStorage.getAuthPassword()).thenReturn("Password14")
+        whenever(localStorage.getAuthPassword()).thenReturn(TEST_PASSWORD)
     }
 
     @Test
     fun `WHEN get saved password EXPECT Password14`() {
         val actual = repository.getAuthPassword()
-        val expected = "Password14"
+        val expected = TEST_PASSWORD
         assertEquals(expected, actual)
     }
 
@@ -41,11 +43,11 @@ class AuthRepositoryTest {
 
     @Test
     fun `WHEN input wrong password EXPECT false (wrong password)`() {
-        assertFalse(repository.checkAuthPassword("Password12"))
+        assertFalse(repository.checkAuthPassword(TEST_WRONG_PASSWORD))
     }
 
     @Test
     fun `WHEN input right password EXPECT true (right password)`() {
-        assertTrue(repository.checkAuthPassword("Password14"))
+        assertTrue(repository.checkAuthPassword(TEST_PASSWORD))
     }
 }
