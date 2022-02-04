@@ -26,22 +26,16 @@ class AddPasswordViewModel(
     val successSavePassword: LiveData<Unit?> = _successSavePassword
 
     fun addNewPassword(site: String?, password: String?) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             if (SiteNameValidator.isValidSiteName(site)
                 && PasswordValidator.isValidCreatedPassword(password)
             ) {
                 addPasswordUseCase(Password(site!!, password!!))
-                withContext(Dispatchers.Main) {
-                    _successSavePassword.value = Unit
-                }
+                _successSavePassword.value = Unit
             } else if (!SiteNameValidator.isValidSiteName(site)) {
-                withContext(Dispatchers.Main) {
-                    _errorSiteNameLiveData.value = Unit
-                }
+                _errorSiteNameLiveData.value = Unit
             } else {
-                withContext(Dispatchers.Main) {
-                    _errorPasswordLiveData.value = Unit
-                }
+                _errorPasswordLiveData.value = Unit
             }
         }
     }
